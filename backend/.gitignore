@@ -1,10 +1,5 @@
 node_modules/
-dist/
-build/
 .env
-.env.local
-.env.*
-!.env.example
 .DS_Store
 *.log
 .idea/
@@ -12,3 +7,5 @@ build/
 *.swp
 *.swo
 ~*
+dist/
+build/
