@@ -63,10 +63,10 @@ export function ResetPassword() {
             <h1
               className={`text-3xl font-bold mb-2 ${isDark ? "text-white" : "text-black"}`}
             >
-              Reset Password
+              Reset Your Password
             </h1>
             <p className={isDark ? "text-gray-400" : "text-gray-600"}>
-              Set a new password for your account
+              Create a new password for your account
             </p>
           </div>
 
