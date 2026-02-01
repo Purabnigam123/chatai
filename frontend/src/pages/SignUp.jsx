@@ -143,7 +143,7 @@ export function SignUp() {
       <motion.button
         whileTap={{ scale: 0.95 }}
         onClick={toggleTheme}
-        className={`fixed top-6 right-6 z-50 relative flex items-center gap-1 p-1 rounded-full backdrop-blur-xl ${isDark ? "bg-white/10 border-white/10" : "bg-black/10 border-black/10"} border transition-colors`}
+        className={`fixed top-4 right-4 z-50 relative flex items-center gap-1 p-1 rounded-full backdrop-blur-xl ${isDark ? "bg-white/10 border-white/10" : "bg-black/10 border-black/10"} border transition-colors`}
       >
         <motion.div
           className={`absolute w-8 h-8 rounded-full ${isDark ? "bg-violet-500" : "bg-amber-400"}`}
@@ -167,7 +167,7 @@ export function SignUp() {
         whileHover={{ scale: 1.05, x: -5 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => navigate("/")}
-        className={`fixed top-6 left-6 flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-xl ${isDark ? "bg-white/10 hover:bg-white/20 text-white border-white/10" : "bg-black/10 hover:bg-black/20 text-black border-black/10"} border transition-all z-50`}
+        className={`fixed top-4 left-4 flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-xl ${isDark ? "bg-white/10 hover:bg-white/20 text-white border-white/10" : "bg-black/10 hover:bg-black/20 text-black border-black/10"} border transition-all z-50`}
       >
         <ArrowLeft size={18} />
         Back
