@@ -143,8 +143,7 @@ export function SignUp() {
       <motion.button
         whileTap={{ scale: 0.95 }}
         onClick={toggleTheme}
-        style={{ top: 12, right: 12, left: "auto" }}
-        className={`fixed z-50 relative flex items-center gap-1 p-1 rounded-full backdrop-blur-xl ${isDark ? "bg-white/10 border-white/10" : "bg-black/10 border-black/10"} border transition-colors`}
+        className={`fixed top-2 right-2 z-50 flex items-center gap-1 p-1 rounded-full backdrop-blur-xl ${isDark ? "bg-white/10 border-white/10" : "bg-black/10 border-black/10"} border transition-colors`}
       >
         <motion.div
           className={`absolute w-8 h-8 rounded-full ${isDark ? "bg-violet-500" : "bg-amber-400"}`}
