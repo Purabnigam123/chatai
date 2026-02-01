@@ -131,43 +131,43 @@ export function LogIn() {
         whileHover={{ scale: 1.05, x: -5 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => navigate("/")}
-        className={`fixed top-2 left-2 flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-xl ${isDark ? "bg-white/10 hover:bg-white/20 text-white border-white/10" : "bg-black/10 hover:bg-black/20 text-black border-black/10"} border transition-all z-50`}
+        className={`fixed top-2 left-2 flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base rounded-full backdrop-blur-xl ${isDark ? "bg-white/10 hover:bg-white/20 text-white border-white/10" : "bg-black/10 hover:bg-black/20 text-black border-black/10"} border transition-all z-50`}
       >
-        <ArrowLeft size={18} />
-        Back
+        <ArrowLeft size={16} className="sm:w-[18px] sm:h-[18px]" />
+        <span className="hidden sm:inline">Back</span>
       </motion.button>
 
       <motion.div
         initial={{ opacity: 0, y: 30, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="w-full max-w-md relative z-10"
+        className="w-full max-w-md relative z-10 px-2 sm:px-0"
       >
         <div
-          className={`p-8 rounded-3xl backdrop-blur-xl relative overflow-hidden ${isDark ? "bg-gray-900/80 border-white/10" : "bg-white/80 border-gray-200"} border shadow-2xl`}
+          className={`p-5 sm:p-8 rounded-2xl sm:rounded-3xl backdrop-blur-xl relative overflow-hidden ${isDark ? "bg-gray-900/80 border-white/10" : "bg-white/80 border-gray-200"} border shadow-2xl`}
         >
           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-violet-500/20 to-fuchsia-500/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
           <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-blue-500/20 to-cyan-500/20 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2" />
 
           <div className="relative z-10">
-            <div className="text-center mb-8">
+            <div className="text-center mb-6 sm:mb-8">
               <motion.div
                 whileHover={{ scale: 1.1, rotate: 10 }}
                 transition={{ type: "spring", stiffness: 400 }}
-                className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-4 bg-gradient-to-br from-violet-600 via-purple-600 to-fuchsia-600 text-white shadow-xl shadow-purple-500/30 relative"
+                className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 bg-gradient-to-br from-violet-600 via-purple-600 to-fuchsia-600 text-white shadow-xl shadow-purple-500/30 relative"
               >
-                <Bot size={36} />
+                <Bot size={28} className="sm:w-9 sm:h-9" />
                 <motion.div
                   animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
                   transition={{ duration: 2, repeat: Infinity }}
-                  className="absolute -top-1 -right-1 w-4 h-4 bg-emerald-400 rounded-full border-2 border-white"
+                  className="absolute -top-1 -right-1 w-3 h-3 sm:w-4 sm:h-4 bg-emerald-400 rounded-full border-2 border-white"
                 />
               </motion.div>
               <motion.h1
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className={`text-3xl font-bold mb-2 ${isDark ? "text-white" : "text-gray-900"}`}
+                className={`text-2xl sm:text-3xl font-bold mb-1 sm:mb-2 ${isDark ? "text-white" : "text-gray-900"}`}
               >
                 Welcome Back
               </motion.h1>
@@ -175,9 +175,9 @@ export function LogIn() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className={`flex items-center justify-center gap-2 ${isDark ? "text-gray-400" : "text-gray-600"}`}
+                className={`flex items-center justify-center gap-2 text-sm sm:text-base ${isDark ? "text-gray-400" : "text-gray-600"}`}
               >
-                <Sparkles size={16} className="text-violet-500" />
+                <Sparkles size={14} className="sm:w-4 sm:h-4 text-violet-500" />
                 Sign in to continue to ChatAI
               </motion.p>
             </div>
@@ -196,21 +196,21 @@ export function LogIn() {
               )}
             </AnimatePresence>
 
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4 }}
               >
                 <label
-                  className={`block text-sm font-medium mb-2 ${isDark ? "text-gray-300" : "text-gray-700"}`}
+                  className={`block text-sm font-medium mb-1.5 sm:mb-2 ${isDark ? "text-gray-300" : "text-gray-700"}`}
                 >
                   Email
                 </label>
                 <div className="relative group">
                   <Mail
-                    className={`absolute left-4 top-1/2 -translate-y-1/2 transition-colors ${focusedField === "email" ? "text-violet-500" : isDark ? "text-gray-500" : "text-gray-400"}`}
-                    size={18}
+                    className={`absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 transition-colors ${focusedField === "email" ? "text-violet-500" : isDark ? "text-gray-500" : "text-gray-400"}`}
+                    size={16}
                   />
                   <input
                     type="email"
@@ -219,7 +219,7 @@ export function LogIn() {
                     onChange={handleChange}
                     onFocus={() => setFocusedField("email")}
                     onBlur={() => setFocusedField(null)}
-                    className={`w-full pl-12 pr-4 py-4 rounded-xl transition-all ${isDark ? "bg-white/5 border-white/10 text-white placeholder-gray-500 focus:border-violet-500/50 focus:bg-white/10" : "bg-white border-gray-200 text-black placeholder-gray-400 focus:border-violet-500/50"} border focus:outline-none focus:ring-2 focus:ring-violet-500/20`}
+                    className={`w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 text-sm sm:text-base rounded-xl transition-all ${isDark ? "bg-white/5 border-white/10 text-white placeholder-gray-500 focus:border-violet-500/50 focus:bg-white/10" : "bg-white border-gray-200 text-black placeholder-gray-400 focus:border-violet-500/50"} border focus:outline-none focus:ring-2 focus:ring-violet-500/20`}
                     placeholder="your@email.com"
                   />
                 </div>
@@ -231,14 +231,14 @@ export function LogIn() {
                 transition={{ delay: 0.5 }}
               >
                 <label
-                  className={`block text-sm font-medium mb-2 ${isDark ? "text-gray-300" : "text-gray-700"}`}
+                  className={`block text-sm font-medium mb-1.5 sm:mb-2 ${isDark ? "text-gray-300" : "text-gray-700"}`}
                 >
                   Password
                 </label>
                 <div className="relative group">
                   <Lock
-                    className={`absolute left-4 top-1/2 -translate-y-1/2 transition-colors ${focusedField === "password" ? "text-violet-500" : isDark ? "text-gray-500" : "text-gray-400"}`}
-                    size={18}
+                    className={`absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 transition-colors ${focusedField === "password" ? "text-violet-500" : isDark ? "text-gray-500" : "text-gray-400"}`}
+                    size={16}
                   />
                   <input
                     type={showPassword ? "text" : "password"}
@@ -247,15 +247,15 @@ export function LogIn() {
                     onChange={handleChange}
                     onFocus={() => setFocusedField("password")}
                     onBlur={() => setFocusedField(null)}
-                    className={`w-full pl-12 pr-12 py-4 rounded-xl transition-all ${isDark ? "bg-white/5 border-white/10 text-white placeholder-gray-500 focus:border-violet-500/50 focus:bg-white/10" : "bg-white border-gray-200 text-black placeholder-gray-400 focus:border-violet-500/50"} border focus:outline-none focus:ring-2 focus:ring-violet-500/20`}
+                    className={`w-full pl-10 sm:pl-12 pr-10 sm:pr-12 py-3 sm:py-4 text-sm sm:text-base rounded-xl transition-all ${isDark ? "bg-white/5 border-white/10 text-white placeholder-gray-500 focus:border-violet-500/50 focus:bg-white/10" : "bg-white border-gray-200 text-black placeholder-gray-400 focus:border-violet-500/50"} border focus:outline-none focus:ring-2 focus:ring-violet-500/20`}
                     placeholder="••••••••"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className={`absolute right-4 top-1/2 -translate-y-1/2 ${isDark ? "text-gray-500 hover:text-gray-300" : "text-gray-400 hover:text-gray-600"} transition-colors`}
+                    className={`absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 ${isDark ? "text-gray-500 hover:text-gray-300" : "text-gray-400 hover:text-gray-600"} transition-colors`}
                   >
-                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                    {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                   </button>
                 </div>
               </motion.div>
@@ -286,7 +286,7 @@ export function LogIn() {
                 whileTap={{ scale: 0.98 }}
                 type="submit"
                 disabled={loading}
-                className="w-full py-4 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 text-white hover:from-violet-700 hover:via-purple-700 hover:to-fuchsia-700 shadow-lg shadow-purple-500/25 disabled:opacity-50"
+                className="w-full py-3 sm:py-4 rounded-xl font-semibold text-sm sm:text-base flex items-center justify-center gap-2 transition-all bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 text-white hover:from-violet-700 hover:via-purple-700 hover:to-fuchsia-700 shadow-lg shadow-purple-500/25 disabled:opacity-50"
               >
                 {loading ? (
                   <motion.div
@@ -310,7 +310,7 @@ export function LogIn() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
-              className={`mt-8 text-center text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}
+              className={`mt-6 sm:mt-8 text-center text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}
             >
               Don't have an account?{" "}
               <button
