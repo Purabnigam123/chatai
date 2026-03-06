@@ -15,9 +15,12 @@ const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/chatgpt-saas';
 
 // Middleware
-app.use(helmet());
+app.use(helmet({
+  crossOriginResourcePolicy: { policy: "cross-origin" },
+}));
 const allowedOrigins = new Set([
   process.env.FRONTEND_URL || 'http://localhost:5173',
+  'https://chatai-purab.vercel.app',
   'https://chatai.vercel.app',
   'http://localhost:3000',
   'http://localhost:5173',
