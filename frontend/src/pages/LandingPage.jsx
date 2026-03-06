@@ -194,7 +194,7 @@ export function LandingPage() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-xl ${isDark ? "bg-black/50 border-white/10" : "bg-white/50 border-black/10"} border-b`}
       >
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
           <motion.div
             whileHover={{ scale: 1.05 }}
             className="flex items-center gap-3 cursor-pointer"
@@ -205,24 +205,24 @@ export function LandingPage() {
             <span className="text-xl font-bold tracking-tight">ChatAI</span>
           </motion.div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={toggleTheme}
               className={`relative flex items-center gap-1 p-1 rounded-full ${isDark ? "bg-white/10" : "bg-black/10"} transition-colors`}
             >
               <motion.div
-                className={`absolute w-8 h-8 rounded-full ${isDark ? "bg-violet-500" : "bg-amber-400"}`}
+                className={`absolute w-7 h-7 sm:w-8 sm:h-8 rounded-full ${isDark ? "bg-violet-500" : "bg-amber-400"}`}
                 animate={{ x: isDark ? 0 : 36 }}
                 transition={{ type: "spring", stiffness: 500, damping: 30 }}
               />
               <div
-                className={`relative z-10 w-8 h-8 flex items-center justify-center ${isDark ? "text-white" : "text-gray-500"} transition-colors`}
+                className={`relative z-10 w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center ${isDark ? "text-white" : "text-gray-500"} transition-colors`}
               >
                 <Moon size={16} />
               </div>
               <div
-                className={`relative z-10 w-8 h-8 flex items-center justify-center ${!isDark ? "text-white" : "text-gray-500"} transition-colors`}
+                className={`relative z-10 w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center ${!isDark ? "text-white" : "text-gray-500"} transition-colors`}
               >
                 <Sun size={16} />
               </div>
@@ -232,7 +232,7 @@ export function LandingPage() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => navigate("/login")}
-              className={`px-5 py-2 rounded-full font-medium ${isDark ? "border border-white/30 hover:bg-white/10" : "border border-black/30 hover:bg-black/10"} transition-all`}
+              className={`px-3 py-1.5 sm:px-5 sm:py-2 rounded-full font-medium text-sm sm:text-base ${isDark ? "border border-white/30 hover:bg-white/10" : "border border-black/30 hover:bg-black/10"} transition-all`}
             >
               Sign In
             </motion.button>
@@ -241,13 +241,13 @@ export function LandingPage() {
       </motion.nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-6 pt-20">
+      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 pt-20">
         <div className="max-w-5xl mx-auto text-center">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-tight"
+            className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 sm:mb-8 leading-tight"
           >
             <span className={`${isDark ? "text-white" : "text-gray-900"}`}>
               The Future of
@@ -280,7 +280,7 @@ export function LandingPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className={`text-lg md:text-xl max-w-2xl mx-auto mb-12 ${isDark ? "text-gray-400" : "text-gray-600"}`}
+            className={`text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-8 sm:mb-12 ${isDark ? "text-gray-400" : "text-gray-600"}`}
           >
             Experience the power of advanced AI. Create, explore, and learn with
             an intelligent assistant that understands you.
@@ -299,7 +299,7 @@ export function LandingPage() {
               }}
               whileTap={{ scale: 0.95 }}
               onClick={() => navigate("/signup")}
-              className="group relative px-8 py-4 rounded-full font-semibold text-lg bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 text-white overflow-hidden shadow-lg shadow-purple-500/25"
+              className="group relative px-6 py-3 sm:px-8 sm:py-4 rounded-full font-semibold text-base sm:text-lg bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 text-white overflow-hidden shadow-lg shadow-purple-500/25"
             >
               <span className="relative z-10 flex items-center gap-2">
                 Get Started Free
@@ -322,7 +322,7 @@ export function LandingPage() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => navigate("/login")}
-              className={`px-8 py-4 rounded-full font-semibold text-lg ${isDark ? "border-2 border-white/30 hover:border-white/60 hover:bg-white/5" : "border-2 border-black/30 hover:border-black/60 hover:bg-black/5"} transition-all`}
+              className={`px-6 py-3 sm:px-8 sm:py-4 rounded-full font-semibold text-base sm:text-lg ${isDark ? "border-2 border-white/30 hover:border-white/60 hover:bg-white/5" : "border-2 border-black/30 hover:border-black/60 hover:bg-black/5"} transition-all`}
             >
               Learn More
             </motion.button>
@@ -386,16 +386,16 @@ export function LandingPage() {
       </section>
 
       {/* Features Section */}
-      <section className="relative py-32 px-6">
+      <section className="relative py-16 sm:py-32 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-10 sm:mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
               Why Choose ChatAI?
             </h2>
             <p
@@ -405,7 +405,7 @@ export function LandingPage() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
@@ -464,7 +464,7 @@ export function LandingPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="relative py-32 px-6">
+      <section className="relative py-16 sm:py-32 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div
             className={`relative rounded-2xl p-8 ${isDark ? "bg-white/5" : "bg-black/5"} border border-transparent bg-clip-padding`}
@@ -503,7 +503,7 @@ export function LandingPage() {
                     }}
                     className="mb-4"
                   >
-                    <p className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-violet-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+                    <p className="text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-violet-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                       {stat.number}
                     </p>
                   </motion.div>
@@ -520,7 +520,7 @@ export function LandingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-32 px-6">
+      <section className="relative py-16 sm:py-32 px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -529,7 +529,7 @@ export function LandingPage() {
           className="max-w-3xl mx-auto text-center"
         >
           <h2
-            className={`text-4xl md:text-6xl font-bold mb-6 ${isDark ? "text-white" : "text-gray-900"}`}
+            className={`text-3xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6 ${isDark ? "text-white" : "text-gray-900"}`}
           >
             Start creating with AI
           </h2>

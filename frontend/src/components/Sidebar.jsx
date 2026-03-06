@@ -7,9 +7,10 @@ import {
   Sparkles,
   Clock,
   Search,
+  X,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useAuthStore, useChatStore, useThemeStore } from "../store";
+import { useAuthStore, useChatStore, useThemeStore, useSidebarStore } from "../store";
 import { chatAPI } from "../api";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
@@ -18,6 +19,7 @@ export function Sidebar() {
   const navigate = useNavigate();
   const { user, logout } = useAuthStore();
   const { isDark } = useThemeStore();
+  const { isOpen, close } = useSidebarStore();
   const [searchQuery, setSearchQuery] = useState("");
   const [hoveredChat, setHoveredChat] = useState(null);
   const {
@@ -52,6 +54,7 @@ export function Sidebar() {
     setActiveChat(null);
     clearMessages();
     navigate("/chat");
+    close(); // close sidebar on mobile
   };
 
   const handleDeleteChat = async (e, chatId) => {
@@ -79,15 +82,32 @@ export function Sidebar() {
   const handleSelectChat = (chat) => {
     setActiveChat(chat);
     navigate(`/chat/${chat._id}`);
+    close(); // close sidebar on mobile
   };
 
   return (
-    <motion.div
-      initial={{ x: -300 }}
-      animate={{ x: 0 }}
-      transition={{ type: "spring", damping: 25, stiffness: 200 }}
-      className={`w-72 flex flex-col h-screen border-r ${isDark ? "bg-black/95 border-white/10" : "bg-white/95 border-black/10"} backdrop-blur-xl`}
-    >
+    <>
+      {/* Mobile overlay backdrop */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={close}
+            className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+          />
+        )}
+      </AnimatePresence>
+
+      <div
+        className={`w-72 flex flex-col h-screen border-r shrink-0
+          fixed inset-y-0 left-0 z-50 
+          lg:static lg:z-auto
+          transition-transform duration-300 ease-in-out
+          ${isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
+          ${isDark ? "bg-black border-white/10" : "bg-white border-black/10"}`}
+      >
       {/* Logo & Header */}
       <div
         className={`p-5 border-b ${isDark ? "border-white/10" : "border-black/10"}`}
@@ -100,7 +120,7 @@ export function Sidebar() {
           >
             <Bot size={22} />
           </motion.div>
-          <div>
+          <div className="flex-1">
             <span
               className={`font-bold text-xl ${isDark ? "text-white" : "text-black"}`}
             >
@@ -115,6 +135,13 @@ export function Sidebar() {
               </span>
             </div>
           </div>
+          {/* Mobile close button */}
+          <button
+            onClick={close}
+            className={`lg:hidden p-2 rounded-lg ${isDark ? "hover:bg-white/10 text-gray-400" : "hover:bg-black/10 text-gray-500"} transition-colors`}
+          >
+            <X size={20} />
+          </button>
         </div>
 
         <motion.button
@@ -311,6 +338,7 @@ export function Sidebar() {
           </div>
         </motion.div>
       </div>
-    </motion.div>
+    </div>
+    </>
   );
 }

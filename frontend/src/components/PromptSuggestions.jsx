@@ -26,7 +26,7 @@ const suggestions = [
 
 export function PromptSuggestions({ onSelect, isDark }) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 max-w-2xl mx-auto w-full px-1 sm:px-0">
       {suggestions.map((suggestion, index) => (
         <motion.button
           key={suggestion.title}

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useChatStore, useThemeStore } from "../store";
+import { useChatStore, useThemeStore, useSidebarStore } from "../store";
 import { chatAPI } from "../api";
 import { Sidebar } from "../components/Sidebar";
 import { PromptSuggestions } from "../components/PromptSuggestions";
@@ -15,11 +15,13 @@ import {
   Shield,
   Brain,
   MessageSquare,
+  Menu,
 } from "lucide-react";
 
 export function HomePage() {
   const navigate = useNavigate();
   const { isDark, toggleTheme } = useThemeStore();
+  const { toggle: toggleSidebar } = useSidebarStore();
   const { setChats, setLoading, setError } = useChatStore();
 
   useEffect(() => {
@@ -129,9 +131,16 @@ export function HomePage() {
 
         {/* Header */}
         <header
-          className={`flex items-center justify-between px-6 py-4 border-b ${isDark ? "bg-black/50 border-white/10" : "bg-white/50 border-black/10"} backdrop-blur-xl relative z-10`}
+          className={`flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b ${isDark ? "bg-black/50 border-white/10" : "bg-white/50 border-black/10"} backdrop-blur-xl relative z-10`}
         >
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Mobile hamburger */}
+            <button
+              onClick={toggleSidebar}
+              className={`lg:hidden p-2 rounded-lg ${isDark ? "hover:bg-white/10 text-gray-400" : "hover:bg-black/10 text-gray-500"} transition-colors`}
+            >
+              <Menu size={20} />
+            </button>
             <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-gradient-to-br from-violet-600 to-purple-600 text-white shadow-md shadow-purple-500/20">
               <Bot size={18} />
             </div>
@@ -152,26 +161,27 @@ export function HomePage() {
         </header>
 
         {/* Main Content */}
-        <div className="flex-1 flex flex-col items-center justify-center px-4 relative z-10 overflow-y-auto">
+        <div className="flex-1 flex flex-col items-center justify-center px-3 sm:px-4 relative z-10 overflow-y-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-8"
+            className="text-center mb-6 sm:mb-8"
           >
             <motion.div
               whileHover={{ scale: 1.1, rotate: 360 }}
               transition={{ duration: 0.5 }}
-              className="w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 bg-gradient-to-br from-violet-600 via-purple-600 to-fuchsia-600 text-white shadow-xl shadow-purple-500/30"
+              className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-6 bg-gradient-to-br from-violet-600 via-purple-600 to-fuchsia-600 text-white shadow-xl shadow-purple-500/30"
             >
-              <Bot size={40} />
+              <Bot size={32} className="sm:hidden" />
+              <Bot size={40} className="hidden sm:block" />
             </motion.div>
             <h2
-              className={`text-4xl font-bold mb-3 ${isDark ? "text-white" : "text-black"}`}
+              className={`text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3 ${isDark ? "text-white" : "text-black"}`}
             >
               How can I help you today?
             </h2>
             <p
-              className={`text-lg ${isDark ? "text-gray-400" : "text-gray-600"}`}
+              className={`text-base sm:text-lg ${isDark ? "text-gray-400" : "text-gray-600"}`}
             >
               Start a conversation or choose a suggestion below
             </p>
@@ -184,7 +194,7 @@ export function HomePage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className="mt-8 flex flex-wrap items-center justify-center gap-4"
+            className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-4"
           >
             <div
               className={`flex items-center gap-2 px-4 py-2 rounded-full ${isDark ? "bg-violet-500/10 border border-violet-500/20" : "bg-violet-50 border border-violet-200"}`}
@@ -227,7 +237,7 @@ export function HomePage() {
 
         {/* Input */}
         <div
-          className={`p-4 border-t ${isDark ? "border-white/10 bg-black/50" : "border-black/10 bg-white/50"} backdrop-blur-xl relative z-10`}
+          className={`p-2 sm:p-4 border-t ${isDark ? "border-white/10 bg-black/50" : "border-black/10 bg-white/50"} backdrop-blur-xl relative z-10`}
         >
           <div className="max-w-3xl mx-auto">
             <ChatInput onSend={handleCreateChat} isDark={isDark} />

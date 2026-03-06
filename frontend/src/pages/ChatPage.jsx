@@ -1,19 +1,20 @@
 import { useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { useChatStore, useThemeStore } from "../store";
+import { useChatStore, useThemeStore, useSidebarStore } from "../store";
 import { chatAPI } from "../api";
 import { Sidebar } from "../components/Sidebar";
 import { ChatInput } from "../components/ChatInput";
 import { Message } from "../components/Message";
 import { TypingIndicator } from "../components/TypingIndicator";
-import { Bot, Moon, Sun } from "lucide-react";
+import { Bot, Moon, Sun, Menu } from "lucide-react";
 
 export function ChatPage() {
   const { chatId } = useParams();
   const navigate = useNavigate();
   const messagesEndRef = useRef(null);
   const { isDark, toggleTheme } = useThemeStore();
+  const { toggle: toggleSidebar } = useSidebarStore();
   const {
     activeChat,
     messages,
@@ -122,14 +123,21 @@ export function ChatPage() {
       <main className="flex-1 flex flex-col relative">
         {/* Header */}
         <header
-          className={`flex items-center justify-between px-6 py-4 border-b ${isDark ? "bg-black/50 border-white/10" : "bg-white/50 border-black/10"} backdrop-blur-xl`}
+          className={`flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b ${isDark ? "bg-black/50 border-white/10" : "bg-white/50 border-black/10"} backdrop-blur-xl`}
         >
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-gradient-to-br from-violet-600 to-purple-600 text-white shadow-md shadow-purple-500/20">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+            {/* Mobile hamburger */}
+            <button
+              onClick={toggleSidebar}
+              className={`lg:hidden p-2 rounded-lg ${isDark ? "hover:bg-white/10 text-gray-400" : "hover:bg-black/10 text-gray-500"} transition-colors`}
+            >
+              <Menu size={20} />
+            </button>
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-gradient-to-br from-violet-600 to-purple-600 text-white shadow-md shadow-purple-500/20 flex-shrink-0">
               <Bot size={18} />
             </div>
             <h1
-              className={`font-semibold truncate max-w-md ${isDark ? "text-white" : "text-black"}`}
+              className={`font-semibold truncate max-w-[150px] sm:max-w-md ${isDark ? "text-white" : "text-black"}`}
             >
               {activeChat?.title || "New Chat"}
             </h1>
@@ -145,8 +153,8 @@ export function ChatPage() {
         </header>
 
         {/* Messages */}
-        <div className="flex-1 overflow-y-auto px-4 py-6">
-          <div className="max-w-3xl mx-auto space-y-6">
+        <div className="flex-1 overflow-y-auto px-2 sm:px-4 py-4 sm:py-6">
+          <div className="max-w-3xl mx-auto space-y-4 sm:space-y-6">
             {error && (
               <div
                 className={`text-sm px-4 py-3 rounded-lg ${isDark ? "bg-white/10 text-gray-200" : "bg-black/10 text-gray-700"}`}
@@ -173,7 +181,7 @@ export function ChatPage() {
 
         {/* Input */}
         <div
-          className={`p-4 border-t ${isDark ? "border-white/10 bg-black/50" : "border-black/10 bg-white/50"} backdrop-blur-xl`}
+          className={`p-2 sm:p-4 border-t ${isDark ? "border-white/10 bg-black/50" : "border-black/10 bg-white/50"} backdrop-blur-xl`}
         >
           <div className="max-w-3xl mx-auto">
             <ChatInput

@@ -1,5 +1,13 @@
 import { create } from 'zustand';
 
+// Sidebar Store
+export const useSidebarStore = create((set) => ({
+  isOpen: false,
+  open: () => set({ isOpen: true }),
+  close: () => set({ isOpen: false }),
+  toggle: () => set((state) => ({ isOpen: !state.isOpen })),
+}));
+
 // Theme Store
 export const useThemeStore = create((set) => ({
   isDark: localStorage.getItem('theme') !== 'light',

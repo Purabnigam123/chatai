@@ -17,20 +17,21 @@ export function Message({ message, isDark }) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className={`flex gap-4 ${isUser ? "justify-end" : "justify-start"}`}
+      className={`flex gap-2 sm:gap-4 ${isUser ? "justify-end" : "justify-start"}`}
     >
       {!isUser && (
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ delay: 0.1 }}
-          className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-violet-600 to-purple-600 text-white shadow-md shadow-purple-500/20"
+          className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-violet-600 to-purple-600 text-white shadow-md shadow-purple-500/20"
         >
-          <Bot size={16} />
+          <Bot size={14} className="sm:hidden" />
+          <Bot size={16} className="hidden sm:block" />
         </motion.div>
       )}
 
-      <div className={`group max-w-[70%] relative`}>
+      <div className={`group max-w-[85%] sm:max-w-[70%] relative`}>
         <motion.div
           initial={{ scale: 0.95 }}
           animate={{ scale: 1 }}
@@ -83,9 +84,10 @@ export function Message({ message, isDark }) {
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ delay: 0.1 }}
-          className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-fuchsia-600 to-pink-600 shadow-md shadow-fuchsia-500/20"
+          className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-fuchsia-600 to-pink-600 shadow-md shadow-fuchsia-500/20"
         >
-          <User size={16} className="text-white" />
+          <User size={14} className="text-white sm:hidden" />
+          <User size={16} className="text-white hidden sm:block" />
         </motion.div>
       )}
     </motion.div>
